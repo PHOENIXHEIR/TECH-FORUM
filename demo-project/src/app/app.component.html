@@ -1,0 +1,66 @@
+<ng-template #template>
+      <div class="modal-header">
+          <h4 class="modal-title pull-left">Sign Up</h4>
+          <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body modal-content">
+          <div>
+              <div class="alert alert-danger" [hidden]="!errorNoMatch">
+                  <strong>Passwords do not match.</strong> 
+              </div>
+              <div class="alert alert-danger" [hidden]="!errorEmpty">
+                  <strong>Please fill out everything.</strong> 
+              </div>
+              <div class="alert alert-danger" [hidden]="!errorOnServer">
+                  <strong>{{ errorOnServer }}</strong>
+              </div>
+            <form>
+              <div class="form-group">
+                <label for="email">Email address:</label>
+                <input placeholder="Email ID" class="form-control" type="email" name="username" [(ngModel)]="newUser.emailId">
+              </div>
+              <div class="form-group">
+                <label for="password">Password:</label>
+                <input placeholder="Password" class="form-control" type="password" name="password" [(ngModel)]="newUser.password">
+              </div>
+              <div class="form-group">
+                <label for="password">Password:</label>
+                <input placeholder="Re-enter password" class="form-control" type="password" name="password" [(ngModel)]="newUser.repeatPassword">
+              </div>
+              <input class="btn btn-success btn-md" (click)="signUp()" value="Sign Up">
+            </form>
+          </div>
+      </div>
+</ng-template>
+  
+<!--=============MINE================-->
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" routerLink="">Discuss</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li routerLink="/home" routerLinkActive="active"><a>Home</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a><div [hidden]="!authenticated()">Welcome, {{ getLoggedInUser() }}</div></a></li>
+      <li (click)="openModal(template)"><a><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li routerLink="/login" routerLinkActive="active"><a><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li><a (click)="logout()"><span class="glyphicon glyphicon-log-out"></span>Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container container-fluid">
+  <div class="alert alert-danger" [hidden]="!logOutError">
+    <strong> There was an error logging out.</strong>
+  </div>
+  
+  <div class="alert alert-info" [hidden]="!loggedOutFlag">
+    <strong> You have been logged out.</strong>
+  </div>
+  <router-outlet></router-outlet>
+</div>
