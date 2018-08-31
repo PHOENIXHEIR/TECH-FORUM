@@ -18,3 +18,6 @@ A discussion forum implemented using Spring Boot in the backend, secured with Sp
 5. Run the Maven Goal in `springbootdemo/` as `spring-boot:run`.
 
 6. Open the browser at `http://localhost:[server.port]`, where the `server.port` is as specified in the `application.properties` file.
+
+# Note
+You **need to** have _node_modules_ directory in the root.
