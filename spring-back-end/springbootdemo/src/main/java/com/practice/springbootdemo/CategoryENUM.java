@@ -1,9 +1,0 @@
-public enum Category {
-    TECHNOLOGY,
-    PROGRAMMING,
-    WEB_DEVELOPMENT,
-    MOBILE_DEVELOPMENT,
-    DATABASES,
-    NETWORKING,
-    SECURITY
-}
